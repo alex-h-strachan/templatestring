@@ -1,6 +1,6 @@
 {
     "version": "3.8.9",
-    "name": "npm",
+    "name": "templatestring",
     "description": "a package manager for JavaScript",
     "keywords": [
         "template",
