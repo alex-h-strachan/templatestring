@@ -1,7 +1,7 @@
 {
     "version": "3.9.3",
     "name": "templatestring",
-    "description": "a package manager for JavaScript",
+    "description": "a string template parser",
     "keywords": [
         "template",
         "strings",
