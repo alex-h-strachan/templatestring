@@ -1,4 +1,5 @@
 var templateparser = require('./templatestring.js');
+"use strict";
 
 var tests = {
     "one-layer object":{
@@ -20,17 +21,28 @@ var tests = {
         str: "foo",
         obj: undefined,
         expect: "foo"
+    },
+    "null property test":{
+        str: "${foo}",
+        obj: {},
+        expect: "undefined"
+    },
+    "special characters":{
+        str: "${a}${1}${!}${$}",
+        obj: {a:"foo", 1: "bar", "!": "foobar", "$": "taco"},
+        expect: "foobarfoobartaco"
     }
 }
-
 
 for(var key in tests) {
     str = tests[key].str;
     obj = tests[key].obj;
-    expect = tests[key].expect
+    expect = tests[key].expect;
     if(templateparser(str, obj) !== expect) {
-        throw new Error(["test", key, "failed"].join(" "))
+        console.log("expected: " + expect);
+        console.log("got: " + templateparser(str, obj));
+        throw new Error(["test", key, "failed"].join(" "));
     }
 }
 
-console.log("tests pass")
+console.log("tests pass");
