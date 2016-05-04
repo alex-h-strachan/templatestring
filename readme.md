@@ -1,6 +1,7 @@
 # Template String
 Parse string templates marked with the tag `${}`. This allows strings with the same template tag as ES6 template strings.
 This can be particularly useful when you don't have direct control of the string. For example, reading from a file or database where you can't cast to a string template.
+The module can also be found <a href = "https://www.npmjs.com/package/templatestring">here on npm</a>
 # Example
 ```javascript
 var templatestring = require('templatestring');
