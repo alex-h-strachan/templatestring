@@ -5,7 +5,7 @@ This can be particularly useful when you don't have direct control of the string
 ```javascript
 var templatestring = require('templatestring');
 templatestring("hi ${name}, I'm ${package.name}", {name: "user", package: {name: "parser"}}); 
-// expect "hi user, I'm parser.
+// expect "hi user, I'm parser".
 ```
 #Details
 The parser will duplicate the result of calling the specified object.
