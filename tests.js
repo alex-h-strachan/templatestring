@@ -1,7 +1,5 @@
-var parser = require('./templatestring.js');
+var templateparser = require('./templatestring.js');
 
-
-parseTemplate("hi ${user.name}, you ${status}... ${asdf}", {user: {name: "KC"}, "user.name": "Oops", asdf:"blrrrgh", status: "won"});
-
-
-parseTemplate("hi ${user.name}, you ${status}... ${asdf}", {user: {name: "KC"}, "user.name": "Oops", asdf:"blrrrgh", status: "won"});
+var template = "hi ${name}, I'm ${module.name}"
+var obj = {name: "User", module: {name: "templateparser", description: "foo"}};
+console.log(templateparser(template, obj));
