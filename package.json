@@ -1,0 +1,15 @@
+{
+    "version": "3.8.9",
+    "name": "npm",
+    "description": "a package manager for JavaScript",
+    "keywords": [
+        "template",
+        "strings",
+        "file"
+    ],
+    "author": "Alex Strachan <alexst@outlook.com>",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/npm/npm"
+    }
+} 
