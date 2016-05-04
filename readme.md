@@ -5,6 +5,8 @@ when you don't have direct control of the string.
 For example, reading from a file or database where 
 you can't cast to a string template.
 
+Note this supports multi-level properties.
+
 ex: 
 
 var templateparser = require('templateparser');
