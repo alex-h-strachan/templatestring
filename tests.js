@@ -12,6 +12,11 @@ var tests = {
         obj: {foo: {bar: "whack"}},
         expect: "hi whack"
     },
+    "repeated two-layer object":{
+        str: "hi ${foo.bar}, this is ${foo.bar}",
+        obj: {foo: {bar: "whack"}},
+        expect: "hi whack, this is whack"
+    },
     "null string test":{
         str: undefined,
         obj: {foo: "bar"},
@@ -31,6 +36,18 @@ var tests = {
         str: "${a}${1}${!}${$}",
         obj: {a:"foo", 1: "bar", "!": "foobar", "$": "taco"},
         expect: "foobarfoobartaco"
+    }, 
+    "dangerous strings":{
+        str: 'this has ${first}, ${second}, ${third}, ${fourth} and ${fifth} inside',
+        obj: {
+            first: '$',
+            second: '$&',
+            third: '$`',
+            fourth: '$\'',
+            fifth: '$1'
+        },
+        expect: 'this has $, $&, $`, $\' and $1 inside'
+        // credit to asmblah https://github.com/asmblah/template-string/blob/master/test/templateTest.js
     }
 }
 
