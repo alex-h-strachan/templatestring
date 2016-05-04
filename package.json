@@ -11,5 +11,9 @@
     "repository": {
         "type": "git",
         "url": "https://github.com/metalsheep/templatestring"
+    },
+    "main": "./templatestring.js",
+    "scripts":{
+        "test": "node ./tests.js"
     }
 } 
