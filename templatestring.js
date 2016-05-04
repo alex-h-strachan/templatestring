@@ -1,4 +1,5 @@
 module.exports = function(str, obj) {
+    str = str || "";
     return str.replace(/\$\{[^}]+\}/g, function(match){
         var keyArray = match.replace(/[\{\}\$]/g, "").split(".");
         var currentVal = obj;
