@@ -36,7 +36,17 @@ var tests = {
         str: "${a}${1}${!}${$}",
         obj: {a:"foo", 1: "bar", "!": "foobar", "$": "taco"},
         expect: "foobarfoobartaco"
-    }, 
+    },
+    "bracket indexed properties":{
+        str: "${['some property']} or ${[0]}",
+        obj: {'some property': "this", 0: "that"},
+        expect: "this or that"
+    },
+    "property names containing [ or .":{
+        str: "This is ${.could}. This is also ${[work}.",
+        obj: {'could.work': 'defined', 'could[work': 'defined'},
+        expect: 'This is undefined. This is also undefined.'
+    },
     "dangerous strings":{
         str: 'this has ${first}, ${second}, ${third}, ${fourth} and ${fifth} inside',
         obj: {
