@@ -58,7 +58,7 @@ Another example: python templates.
 ```javascript
 var templatestring = require('templatestring');
 templatestring("I {0} {1} {2} brackets", ["can", "use", "python" ], {start: "\\{", end: "\\}"}); 
-// expect "I can use <%-style templates!"
+// expect "I can use python brackets"
 ```
 Note: template parser does not 'eval()' anything and is restricted to checking properties of the namespace of the data object passed to it.
 As such, it should be safe to use with un-trusted inputs.  
