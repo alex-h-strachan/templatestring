@@ -73,6 +73,18 @@ var tests = {
         opt: { start: "<%", end: "%>" },
         expect: "I can use <%-style templates!"
     },
+    "/marker ": {
+        str:"slack /template ", 
+        obj:{ template: "style" },
+        opt: { start: "/", end: " " },
+        expect: "slack style"
+    },
+    "python brackets":{
+        str:"I {0} {1} {2} brackets",
+        obj: ["can", "use", "python" ],
+        opt: {start: "\\{", end: "\\}"},
+        expect: "I can use python brackets"
+    },
     "dangerous strings": {
         str: 'this has ${first}, ${second}, ${third}, ${fourth} and ${fifth} inside',
         obj: {

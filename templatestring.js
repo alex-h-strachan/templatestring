@@ -34,8 +34,8 @@ module.exports = function(str, obj, options) {
     var start = (options || {}).start || "\\$\\{";
     var end = (options || {}).end || "\\}";
     
-    var matchPattern = new RegExp(start + '[^}]+' + end, "g")
-    var stripPattern = new RegExp('^' + start + "|" + end + '$', "g")
+    var matchPattern = new RegExp(start + '[^' + end + ']+' + end, "g");
+    var stripPattern = new RegExp('^' + start + "|" + end + '$', "g");
 
     str = str || "";
     /**

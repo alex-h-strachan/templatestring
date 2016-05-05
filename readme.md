@@ -54,6 +54,12 @@ var templatestring = require('templatestring');
 templatestring("I can use <%template%>", {template: "<%-style templates!"}, {start: "<%", end: "%>"}); 
 // expect "I can use <%-style templates!"
 ```
+Another example: python templates.
+```javascript
+var templatestring = require('templatestring');
+templatestring("I {0} {1} {2} brackets", ["can", "use", "python" ], {start: "\\{", end: "\\}"}); 
+// expect "I can use <%-style templates!"
+```
 Note: template parser does not 'eval()' anything and is restricted to checking properties of the namespace of the data object passed to it.
 As such, it should be safe to use with un-trusted inputs.  
 However, this has a down side.  Property names with periods or braces are not supported.
