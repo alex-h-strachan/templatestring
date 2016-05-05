@@ -1,6 +1,7 @@
 # Template String
-Parse string templates marked with the tag `${}`. This allows strings with the same template tag as ES6 template strings.
+Parse string templates.  By default it uses the `${}` tag. This provides functionality similar to ES6 template strings with standard js strings.
 This can be particularly useful when you don't have direct control of the string. For example, reading from a file or database where you can't cast to a string template.
+The tag marker for templates can be configured using an options object specifying a start and end pattern.  See Advanced for examples.
 The module can also be found <a href = "https://www.npmjs.com/package/templatestring">here on npm</a>
 # Example
 ```javascript
@@ -9,8 +10,7 @@ templatestring("hi ${name}, I'm ${package.name}", {name: "user", package: {name:
 // expect "hi user, I'm parser".
 ```
 #Details
-The parser will duplicate the result of calling the specified object.
-If the object has multiple levels, you can call to them.
+Multi-level objects work as template names.
 ```javascript
 var templatestring = require('templatestring');
 templatestring("${foo.bar}", {foo: {bar: "hi"}}); 
@@ -60,9 +60,10 @@ var templatestring = require('templatestring');
 templatestring("I {0} {1} {2} brackets", ["can", "use", "python" ], {start: "\\{", end: "\\}"}); 
 // expect "I can use python brackets"
 ```
-Note: template parser does not 'eval()' anything and is restricted to checking properties of the namespace of the data object passed to it.
+#Caveat
+Template parser does not 'eval()' anything and is restricted to checking properties of the namespace of the data object passed to it.
 As such, it should be safe to use with un-trusted inputs.  
-However, this has a down side.  Property names with periods or braces are not supported.
+However, as a consequence, property names with ['s or .'s are not supported
 ```javascript
 var templatestring = require('templatestring');
 var str = "This is ${.could}. This is also ${[work}.";
