@@ -49,7 +49,7 @@ var tests = {
     },
     "property names containing [ or .":{
         str: "This is ${.could}. This is also ${[work}.",
-        obj: {'could.work': 'defined', 'could[work': 'defined'},
+        obj: {'.could': 'defined', '[work': 'defined'},
         expect: 'This is undefined. This is also undefined.'
     },
     "dangerous strings":{

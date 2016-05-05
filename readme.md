@@ -40,7 +40,7 @@ However, this has a down side.  Property names with periods or braces are not su
 ```javascript
 var templatestring = require('templatestring');
 var str = "This is ${.could}. This is also ${[work}.",
-var obj = {'could.work': 'defined', 'could[work': 'defined'},
+var obj = {'.could': 'defined', '[work': 'defined'},
 
 templatestring(str, obj); 
 // expect 'This is undefined. This is also undefined.'
