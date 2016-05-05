@@ -1,20 +1,26 @@
 "use strict";
 
+/** 
+ *  Take the index specified in the template and convert it into an array
+ *  of indecies that will be applied to the obj argument
+ */
+
 function createIndexArray(str) {
-    /** Take the index specified in the template and convert it into an array
-     *  of indecies that will be applied to the obj argument
-     */
-    // start by splitting the string on periods or braces.
-    // we explicitly claim properties with either character in the name are unsupported.
-    var roughArray = str.split(/\.|\[|\]/g); 
-    
     var finalArray = [],
         item;
-    for(var i = 0; i < roughArray.length; i++) {
+        
+    /**
+     *  Start by splitting the string on periods or braces.
+     *  We make accept that this will break property names with .'s in them.
+     *  This is described in the readme.md under 'advanced'
+     */
+    var roughArray = str.split(/\.|\[|\]/g); 
+        
+    for (var i = 0; i < roughArray.length; i++) {
         item = roughArray[i];
-        if(item !== "") {
+        if (item !== "") {
             // if property starts and ends with quotes, strip them
-            if(/^['"][^]*['"]$/.test(item)){
+            if (/^['"][^]*['"]$/.test(item)) {
                 finalArray.push(item.substr(1, item.length - 2));
             } else {
                 finalArray.push(item);
@@ -25,18 +31,23 @@ function createIndexArray(str) {
 }
 
 module.exports = function(str, obj, options) {
-
-    var start = (options||{}).start || "\\$\\{";
-    var end = (options||{}).end || "\\}";
+    var start = (options || {}).start || "\\$\\{";
+    var end = (options || {}).end || "\\}";
     
-    var pattern = new RegExp(start + '[^}]+' + end, "g")
+    var matchPattern = new RegExp(start + '[^}]+' + end, "g")
     var stripPattern = new RegExp('^' + start + "|" + end + '$', "g")
 
     str = str || "";
-    return str.replace(pattern, function(match){
+    /**
+     *  Set up the replacements to swap out the templates.
+     */
+    return str.replace(matchPattern, function(match) {
         var keyArray = createIndexArray(match.replace(stripPattern, ""));
         var currentVal = obj;
-        for(var i = 0; i < keyArray.length; i++) {
+        /**
+         *  Itterate throught the keys
+         */
+        for (var i = 0; i < keyArray.length; i++) {
             currentVal = currentVal[keyArray[i]];
         }
         return currentVal;
