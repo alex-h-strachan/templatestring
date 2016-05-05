@@ -34,6 +34,7 @@ var templatestring = require('templatestring');
 templatestring("${['some property']} or {[0]}", {'some property': "this", 0: "that"}); 
 // expect "this or that"
 ```
+#Advanced
 You can also define your own matching pattern by passing an options argument.  
 By default the pattern start:`\\$\\{` and end `\\}` is used which matches start:`${` end:`}`.
 
