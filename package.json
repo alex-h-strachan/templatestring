@@ -1,5 +1,5 @@
 {
-    "version": "4.0.9",
+    "version": "4.0.10",
     "name": "templatestring",
     "description": "a string template parser",
     "keywords": [
@@ -17,5 +17,5 @@
     "scripts":{
         "test": "node ./tests.js"
     },
-    "tonicExample": "var templatestring = require('templatestring');\nconsole.log(\n    templatestring('hi ${name}, I am ${package.name}', {name: 'user', package: {name: 'parser'}})\n);\nconsole.log(\n    templatestring('I am /state today',{state:'good'}, {start:'/', end:' '})\n);"
+    "tonicExample": "var templatestring = require('templatestring');\nconsole.log(\n    templatestring('hi ${name}, I am ${package.name}', {name: 'user', package: {name: 'parser'}})\n);\nconsole.log(\n    templatestring('I {0} {1} {3} style',['can', 'do','python'], {start:'\\{', end:'\\}'})\n);"
 } 

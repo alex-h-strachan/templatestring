@@ -74,10 +74,10 @@ var tests = {
         expect: "I can use <%-style templates!"
     },
     "/marker ": {
-        str:"slack /template ", 
+        str:"slack /template  templates", 
         obj:{ template: "style" },
         opt: { start: "/", end: " " },
-        expect: "slack style"
+        expect: "slack style templates"
     },
     "python brackets":{
         str:"I {0} {1} {2} brackets",
