@@ -1,11 +1,12 @@
 {
-    "version": "3.9.9",
+    "version": "4.0.0",
     "name": "templatestring",
     "description": "a string template parser",
     "keywords": [
         "template",
         "strings",
-        "file"
+        "file",
+        "handlebars"
     ],
     "author": "Alex Strachan <alexst@outlook.com>",
     "repository": {
