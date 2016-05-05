@@ -31,7 +31,7 @@ templatestring("${foo.bar}", {});
 It even works with brace notation
 ```javascript
 var templatestring = require('templatestring');
-templatestring("${['some property']} or {[0]}", {'some property': "this", 0: "that"}); 
+templatestring("${['some property']} or ${[0]}", {'some property': "this", 0: "that"}); 
 // expect "this or that"
 ```
 #Advanced
@@ -53,8 +53,8 @@ As such, it should be safe to use with un-trusted inputs.
 However, this has a down side.  Property names with periods or braces are not supported.
 ```javascript
 var templatestring = require('templatestring');
-var str = "This is ${.could}. This is also ${[work}.",
-var obj = {'.could': 'defined', '[work': 'defined'},
+var str = "This is ${.could}. This is also ${[work}.";
+var obj = {'.could': 'defined', '[work': 'defined'};
 
 templatestring(str, obj); 
 // expect 'This is undefined. This is also undefined.'
