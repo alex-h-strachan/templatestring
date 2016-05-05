@@ -24,10 +24,17 @@ function createIndexArray(str) {
     return finalArray;
 }
 
-module.exports = function(str, obj) {
+module.exports = function(str, obj, options) {
+
+    var start = (options||{}).start || "\\$\\{";
+    var end = (options||{}).end || "\\}";
+    
+    var pattern = new RegExp(start + '[^}]+' + end, "g")
+    var stripPattern = new RegExp('^' + start + "|" + end + '$', "g")
+
     str = str || "";
-    return str.replace(/\$\{[^}]+\}/g, function(match){
-        var keyArray = createIndexArray(match.replace(/^\$\{|}$/g, ""));
+    return str.replace(pattern, function(match){
+        var keyArray = createIndexArray(match.replace(stripPattern, ""));
         var currentVal = obj;
         for(var i = 0; i < keyArray.length; i++) {
             currentVal = currentVal[keyArray[i]];

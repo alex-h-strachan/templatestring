@@ -52,6 +52,12 @@ var tests = {
         obj: {'.could': 'defined', '[work': 'defined'},
         expect: 'This is undefined. This is also undefined.'
     },
+    "other template markers":{
+        str: "I can use {{template}}",
+        obj: {template: "handlebars!"},
+        opt: {start: "\\{\\{", end: "\\}\\}"},
+        expect: "I can use handlebars!"
+    },
     "dangerous strings":{
         str: 'this has ${first}, ${second}, ${third}, ${fourth} and ${fifth} inside',
         obj: {
@@ -69,8 +75,9 @@ var tests = {
 for(var key in tests) {
     str = tests[key].str;
     obj = tests[key].obj;
+    opt = tests[key].opt
     expect = tests[key].expect;
-    if(templateparser(str, obj) !== expect) {
+    if(templateparser(str, obj, opt) !== expect) {
         console.log("expected: " + expect);
         console.log("got: " + templateparser(str, obj));
         throw new Error(["test", key, "failed"].join(" "));
