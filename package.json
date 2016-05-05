@@ -17,5 +17,5 @@
     "scripts":{
         "test": "node ./tests.js"
     },
-    "tonicExample": "var templatestring = require('templatestring'); \ntemplatestring('hi ${name}, I am ${package.name}', {name: 'user', package: {name: 'parser'}});"
+    "tonicExample": "var templatestring = require('templatestring');\ntemplatestring('hi ${name}, I am ${package.name}', {name: 'user', package: {name: 'parser'}});\ntemplatestring('I am /state ',{state:'good'}, {start:'/', end:' '})"
 } 
