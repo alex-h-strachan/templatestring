@@ -41,6 +41,11 @@ var tests = {
         str: "${['some property']} or ${[0]}",
         obj: {'some property': "this", 0: "that"},
         expect: "this or that"
+    },    
+    "complex indexed properties":{
+        str: "${a.['some ']['pro per ty']} or ${b[0]}",
+        obj: {a:{'some ': {'pro per ty': "this"}}, b:["that"]},
+        expect: "this or that"
     },
     "property names containing [ or .":{
         str: "This is ${.could}. This is also ${[work}.",
