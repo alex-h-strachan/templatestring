@@ -52,11 +52,17 @@ var tests = {
         obj: {'.could': 'defined', '[work': 'defined'},
         expect: 'This is undefined. This is also undefined.'
     },
-    "other template markers":{
+    "handlebar markers":{
         str: "I can use {{template}}",
         obj: {template: "handlebars!"},
         opt: {start: "\\{\\{", end: "\\}\\}"},
         expect: "I can use handlebars!"
+    },
+    "<% markers":{
+        str:"I can use <%template%>", 
+        obj:{template: "<%-style templates!"},
+        opt: {start: "<%", end: "%>"},
+        expect: "I can use <%-style templates!"
     },
     "dangerous strings":{
         str: 'this has ${first}, ${second}, ${third}, ${fourth} and ${fifth} inside',
