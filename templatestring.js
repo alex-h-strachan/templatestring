@@ -30,9 +30,11 @@ function createIndexArray(str) {
     return finalArray;
 }
 
-module.exports = function(str, obj, options) {
-    var start = (options || {}).start || "\\$\\{";
-    var end = (options || {}).end || "\\}";
+function parser(str, obj, options) {
+    var options = options || {}
+    
+    var start = options.start || "\\$\\{";
+    var end = options.end || "\\}";
     
     var matchPattern = new RegExp(start + '[^' + end + ']+' + end, "g");
     var stripPattern = new RegExp('^' + start + "|" + end + '$', "g");
@@ -50,6 +52,13 @@ module.exports = function(str, obj, options) {
         for (var i = 0; i < keyArray.length; i++) {
             currentVal = currentVal[keyArray[i]];
         }
-        return currentVal;
+        
+        if(options.encode === true) {
+            return encodeURIComponent(currentVal);
+        } else {
+            return currentVal;
+        }
     });
 }
+
+module.exports = parser;

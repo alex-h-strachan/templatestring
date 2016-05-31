@@ -96,6 +96,12 @@ var tests = {
         },
         expect: 'this has $, $&, $`, $\' and $1 inside'
         // credit to asmblah https://github.com/asmblah/template-string/blob/master/test/templateTest.js
+    },
+    "encode strings": {
+        str: 'encode ${specialChars}',
+        obj: {specialChars: '%$` '},
+        opt: {encode: true},
+        expect: 'encode %25%24%60%20'
     }
 }
 
