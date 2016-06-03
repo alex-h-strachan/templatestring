@@ -66,6 +66,12 @@ var templatestring = require('templatestring');
 templatestring("encode ${specialChars}", {specialChars: '%$` '}, {encode: true}); 
 // expect "encode %25%24%60%20"
 ```
+Safely encode results for postgres.
+```javascript
+var templatestring = require('templatestring');
+templatestring("encode ${specialChars}", {specialChars: '%$`\'\' '}, {encode: 'postgres'}); 
+// expect "encode %25%24%60\'\'\'\'%20"
+```
 #Caveat
 Template parser does not 'eval()' anything and is restricted to checking properties of the namespace of the data object passed to it.
 As such, it should be safe to use with un-trusted inputs.  
