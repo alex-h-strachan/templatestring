@@ -102,6 +102,12 @@ var tests = {
         obj: {specialChars: '%$` '},
         opt: {encode: true},
         expect: 'encode %25%24%60%20'
+    },
+    "encode pg strings": {
+        str: 'encode ${specialChars}',
+        obj: {specialChars: '%$`\'\' '},
+        opt: {encode: 'postgres'},
+        expect: 'encode %25%24%60\'\'\'\'%20'
     }
 }
 
