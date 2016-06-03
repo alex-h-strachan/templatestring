@@ -56,7 +56,6 @@ function parser(str, obj, options) {
         if(options.encode === true) {
             return encodeURIComponent(currentVal);
         } else if(options.encode === 'postgres') {
-            console.log('pg string')
             return encodeURIComponent(currentVal).replace(/'/g, "''");
         } else {
             return currentVal;
