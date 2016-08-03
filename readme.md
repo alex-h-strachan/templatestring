@@ -9,6 +9,17 @@ var templatestring = require('templatestring');
 templatestring("hi ${name}, I'm ${package.name}", {name: "user", package: {name: "parser"}}); 
 // expect "hi user, I'm parser".
 ```
+# Caching
+New! 
+
+Templatestring will perform greedy caching on any parsed templates.  Any subsequent runs of the template are 10x faster than the first run.
+Set the cache length to any integer to control maximum memory consumption, if needed.
+
+```javascript
+var templatestring = require('templatestring').cache_length(10000);
+templatestring("hi ${name}, I'm ${package.name}", {name: "user", package: {name: "parser"}}); 
+// expect "hi user, I'm parser".
+```
 #Details
 Multi-level objects work as template names.
 ```javascript
@@ -83,4 +94,12 @@ var obj = {'.could': 'defined', '[work': 'defined'};
 
 templatestring(str, obj); 
 // expect 'This is undefined. This is also undefined.'
+```
+
+Caching has also introduced some overhead into the first run of a template:
+if you need the speed of the old parser, and caching won't help your use case, you can still use 
+```javascript
+var templatestring = require('templatestring').legacy;
+templatestring("hi ${name}, I'm ${package.name}", {name: "user", package: {name: "parser"}}); 
+// expect "hi user, I'm parser".
 ```
