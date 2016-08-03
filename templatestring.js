@@ -48,7 +48,11 @@ function parser(str, obj, options) {
             start_index = match.index + indexAdjustment;
             propertyName = matchString.replace(stripPattern, '');
             length = matchString.length;
-            matches.push(new Match(propertyName, start_index, length));
+            matches.push({
+                propertyName: propertyName,
+                start: start_index,
+                length: length
+            });
 
             str_copy = str_copy.substr(match.index + length)
             indexAdjustment += (match.index + length);
@@ -62,13 +66,7 @@ function parser(str, obj, options) {
     var result = cache.run(str, obj, options);
     cache.trim();
 
-    return result
-
-    function Match(propertyName, start, length) {
-        this.propertyName = propertyName;
-        this.start = start;
-        this.length = length;
-    }
+    return result;
 }
 
 var cache = new Cache();
