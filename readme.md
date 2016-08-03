@@ -95,11 +95,3 @@ var obj = {'.could': 'defined', '[work': 'defined'};
 templatestring(str, obj); 
 // expect 'This is undefined. This is also undefined.'
 ```
-
-Caching has also introduced some overhead into the first run of a template:
-if you need the speed of the old parser, and caching won't help your use case, you can still use 
-```javascript
-var templatestring = require('templatestring').legacy;
-templatestring("hi ${name}, I'm ${package.name}", {name: "user", package: {name: "parser"}}); 
-// expect "hi user, I'm parser".
-```

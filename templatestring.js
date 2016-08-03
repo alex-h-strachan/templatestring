@@ -94,11 +94,15 @@ function Cache() {
         var output = original;
         var template = this.compiled_templates[original];
 
+        var before, 
+            replacement, 
+            after;
+
         // note the markers are run back to front
         template.markers.forEach(function(marker) {
-            var before = output.substr(0, marker.start);
-            var replacement = findProperty(obj, marker.propertyName, opts);
-            var after = output.substr(marker.start + marker.length);
+            before = output.substr(0, marker.start);
+            replacement = findProperty(obj, marker.propertyName, opts);
+            after = output.substr(marker.start + marker.length);
             output = before + replacement + after;
         });
 
@@ -165,4 +169,3 @@ function Cache() {
 
 module.exports = parser;
 module.exports.cache_length = cache_length;
-module.exports.legacy = require('./templatestring_legacy');
