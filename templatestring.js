@@ -94,19 +94,16 @@ function Cache() {
         var output = original;
         var template = this.compiled_templates[original];
 
-        var before, 
-            replacement, 
-            after;
+        var after = '',
+            current = output;
 
         // note the markers are run back to front
         template.markers.forEach(function(marker) {
-            before = output.substr(0, marker.start);
-            replacement = findProperty(obj, marker.propertyName, opts);
-            after = output.substr(marker.start + marker.length);
-            output = before + replacement + after;
+            after = findProperty(obj, marker.propertyName, opts) + current.substr(marker.start + marker.length) + after;
+            current = output.substr(0, marker.start);
         });
 
-        return output
+        return current + after;
     }
 
     this.trim = function() {
