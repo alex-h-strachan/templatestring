@@ -140,16 +140,18 @@ function Cache() {
 
     function createIndexArray(str) {
         var finalArray = [],
-            item;
+            item, 
+            roughArray = str.split(/\.|\[|\]/g),
+            i = 0,
+            max = roughArray.length;
             
         /**
          *  Start by splitting the string on periods or braces.
          *  We make accept that this will break property names with .'s in them.
          *  This is described in the readme.md under 'advanced'
          */
-        var roughArray = str.split(/\.|\[|\]/g); 
             
-        for (var i = 0; i < roughArray.length; i++) {
+        for (i; i < max; i++) {
             item = roughArray[i];
             if (item !== "") {
                 // if property starts and ends with quotes, strip them
